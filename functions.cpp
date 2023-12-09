@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 // This function will print the game board when required
 void printGameBoard(char board[]) {
@@ -19,8 +20,38 @@ void printHelpBoard() {
 }
 
 // Need a function to grab player input and return that to a function to place it on the game board
-int getPlayerInput() {
-  return -1;
+int getPlayerInput(int playerTurn) {
+  int playerChoice;
+  bool numberChosen = false;
+
+  // Checks to see which player it currently is
+  if (playerTurn == 0) {
+    std::cout << "Player X, it is your turn to play!\n";
+  } else {
+    std::cout << "Player O, it is your turn to play!\n";
+  }
+
+  // Input loop that validates an integer has been presented to the program
+  while (!numberChosen) {
+    std::cout << "Please enter a number (1-9) of where to play on the board or, alternatively, enter the number 0 to show the help board again: ";
+
+    // Checks if the input is a valid integer
+    if (std::cin >> playerChoice) {
+      if (playerChoice == 0) {
+        printHelpBoard();
+      } else if (playerChoice >= 1 && playerChoice <= 9) {
+        numberChosen = true;
+      } else {
+        std::cout << "Number in disallowed range. Enter a number between 0-9 only.\n";
+      }
+    } else {
+      // Handles non-integer input here
+      std::cout << "Invalid input. Please enter a number.\n";
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+  }
+  return playerChoice;
 }
 
 // Need a function to place player input on to game board that uses the above function

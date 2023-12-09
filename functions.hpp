@@ -4,7 +4,7 @@ void printGameBoard(char board[]);
 
 void printHelpBoard();
 
-int getPlayerInput();
+int getPlayerInput(int playerTurn);
 
 void placePlayerInput();
 
