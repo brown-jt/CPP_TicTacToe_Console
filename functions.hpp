@@ -1,6 +1,6 @@
 #include <iostream>
 
-void printGameBoard();
+void printGameBoard(char board[]);
 
 void printHelpBoard();
 
