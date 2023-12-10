@@ -6,6 +6,8 @@ void printHelpBoard();
 
 int getPlayerInput(int playerTurn);
 
-void placePlayerInput();
+int checkPlayerInput(int playerTurn, char board[]);
+
+void placePlayerInput(int playerTurn, int boardPos, char board[]);
 
 bool checkGameWinConditions();
