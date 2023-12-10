@@ -18,6 +18,7 @@ int main() {
 
   // Start of main game loop
   while (!gameEnded) {
+    std::cout << "\nCurrent game board:\n";
     printGameBoard(gameboard);
     playerChoice = checkPlayerInput(playerTurn, gameboard);
     placePlayerInput(playerTurn, playerChoice, gameboard);
@@ -39,7 +40,7 @@ int main() {
   }
 
   // Final showing of the game board to the players
-  std::cout << "Final game board is as shown:\n";
+  std::cout << "\nFinal game board is as shown:\n";
   printGameBoard(gameboard);
 
   return 0;
