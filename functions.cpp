@@ -82,13 +82,34 @@ void placePlayerInput(int playerTurn, int boardPos, char board[]) {
   board[boardPos] = charToPlace;
 }
 
-// Need a function to check if the game has been won by someone and return true if it has to the main game loop
-bool checkGameWinConditions() {
-  // Check Horizontal
+// This function checks to see if the game has been won by someone and returns true if it has to the main game loop
+bool checkWinConditions(char board[]) {
+  bool gameWon = false;
+  // Check Horizontal (0,1,2 or 3,4,5 or 6,7,8)
+  for (int i = 0; i < 3; i++) {
+    if (board[i * 3] != ' ' && board[i * 3] == board[i * 3 + 1] && board[i * 3 + 1] == board[i * 3 + 2]) {
+      std::cout << "Won horizontally!\n";
+      gameWon = true;
+    }
+  }
 
-  // Check Vertical
+  // Check Vertical (0,3,6 or 1,4,7 or 2,5,8)
+  for (int i = 0; i < 3; i++) {
+    if (board[i] != ' ' && board[i] == board[i + 3] && board[i + 3] == board[i + 6]) {
+      std::cout << "Won vertically!\n";
+      gameWon = true;
+    }
+  }
 
-  // Check Diagonal
-  return false;
+  // Check Diagonal (0,4,8 or 2,4,6)
+  if (board[0] != ' ' && board[0] == board[4] && board[4] == board[8]) {
+    std::cout << "Won diagonally!\n";
+    gameWon = true;
+  } else if (board[2] != ' ' && board[2] == board[4] && board[4] == board[6]) {
+    std::cout << "Won diagonally!\n";
+    gameWon = true;
+  }
+
+  return gameWon;
 }
 

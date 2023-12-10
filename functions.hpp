@@ -10,4 +10,4 @@ int checkPlayerInput(int playerTurn, char board[]);
 
 void placePlayerInput(int playerTurn, int boardPos, char board[]);
 
-bool checkGameWinConditions();
+bool checkWinConditions(char board[]);
