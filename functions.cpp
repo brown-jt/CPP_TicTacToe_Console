@@ -19,7 +19,7 @@ void printHelpBoard() {
   std::cout << " 7 | 8 | 9 \n";
 }
 
-// Need a function to grab player input and return that to a function to place it on the game board
+// Function used to grab player input and return that to a function that checks to see if the space is available first
 int getPlayerInput(int playerTurn) {
   int playerChoice;
   bool numberChosen = false;
@@ -54,9 +54,32 @@ int getPlayerInput(int playerTurn) {
   return playerChoice;
 }
 
-// Need a function to place player input on to game board that uses the above function
-void placePlayerInput() {
-  // Uses getPlayerInput()
+// Function that will check to see if the correctly selected position is already taken or not
+int checkPlayerInput(int playerTurn, char board[]) {
+  bool correctPos = false;
+  int boardPos;
+  // Start a do-while loop that loops until a correct number has been identified that is an available space
+  do {
+    boardPos = getPlayerInput(playerTurn) -1;
+    if (board[boardPos] != ' ') {
+      std::cout << "Position already taken.\n";
+    } else {
+      std::cout << "Position is available.\n";
+      correctPos = true;
+    }
+  } while (correctPos == false);
+  return boardPos;
+}
+
+// This function will place player input on to game board that uses the returned board position from the above function
+void placePlayerInput(int playerTurn, int boardPos, char board[]) {
+  char charToPlace;
+  if (playerTurn == 0) {
+    charToPlace = 'X';
+  } else {
+    charToPlace = 'O';
+  }
+  board[boardPos] = charToPlace;
 }
 
 // Need a function to check if the game has been won by someone and return true if it has to the main game loop
