@@ -10,8 +10,11 @@ int main() {
   bool winner = false;
   
   // Prints the help board to show the players how to play
+  std::cout << "Welcome to this console game of Tic-Tac-Toe / Noughts & Crosses!\n";
+  std::cout << "Generic rules apply. A player can win either horizontally, vertically or diagonally.\n";
+  std::cout << "Please refer to the below help board to see positions that you can play in:\n";
   printHelpBoard();
-  std::cout << "\n";
+  std::cout << "At any time you are prompted for input, the number '0' will show you this help board again.\n";
 
   // Start of main game loop
   while (!gameEnded) {
@@ -29,7 +32,7 @@ int main() {
       winner = true;
     }
     playerTurn = 1 - playerTurn; // This cycles through 0 and 1 to alternate player
-    if (turnNumber >= 9 && !winner) {
+    if (turnNumber == 9 && !winner) {
       gameEnded = true;
       std::cout << "Draw! No winners this time around.\n";
     }
